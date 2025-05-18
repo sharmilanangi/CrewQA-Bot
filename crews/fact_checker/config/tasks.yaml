@@ -1,0 +1,73 @@
+# claim_research_task:
+#   description: >
+#     Get all the relevant information about the following claim made : "{claim}"
+#     This claim was made in the context of the following: "{context}"
+#     Research the given fact thoroughly. Search for reliable sources that confirm or contradict the claim. Look for primary sources, expert opinions, and statistical data when applicable.
+#     Provide a comprehensive summary of your findings, including direct quotes and citations from reliable sources. Make sure to include any relevant context that might affect the interpretation of the fact.
+#   expected_output: >
+#     A detailed research report with findings from multiple sources, including direct quotes, citations, and relevant context.
+#   agent: "researcher"
+
+# claim_verification_task:
+#   description: >
+#     Analyze the following research findings and evaluate the claim: "{claim}"
+    
+#     Carefully evaluate the evidence presented in the research findings. Consider:
+#     - The reliability and credibility of the sources
+#     - The strength of the supporting or contradicting evidence
+#     - Any potential biases or limitations in the research
+#     - The broader context in which the claim was made
+    
+#     Provide a clear verdict on whether the claim is:
+#     - True (fully supported by evidence)
+#     - False (contradicted by evidence)
+#     - Partially True (some elements are accurate while others are not)
+#     - Unverifiable (insufficient evidence to make a determination)
+    
+#     Include a detailed explanation of your reasoning, citing specific evidence from the research findings.
+#   expected_output: >
+#     A comprehensive analysis report containing:
+#     - Clear verdict on the claim's accuracy
+#     - Detailed explanation of the reasoning
+#     - Citations of specific evidence used
+#     - Discussion of any important caveats or limitations
+#   agent: "analyst"
+#   context:
+#     - claim_research_task
+
+claim_research_task:
+  description: >
+    Research the following claim: "{claim}"
+    Context: "{context}"
+    
+    Perform a focused search to find 2-3 reliable sources that address this claim.
+    Prioritize authoritative sources and recent information.
+    Provide a brief summary of key findings, with minimal direct quotes.
+  expected_output: >
+    A concise research summary with key findings from 2-3 reliable sources.
+  agent: "researcher"
+
+claim_verification_task:
+  description: >
+    Evaluate this claim based on the research findings: "{claim}"
+    
+    Analyze the evidence by considering:
+    - Source reliability
+    - Key supporting/contradicting points
+    - Basic context
+    
+    Provide a simple verdict:
+    - True
+    - False  
+    - Partially True
+    - Unverifiable
+    
+    Include a brief explanation with 1-2 key pieces of evidence.
+  expected_output: >
+    A focused analysis containing:
+    - Clear verdict
+    - Brief explanation (2-3 sentences)
+    - Key supporting evidence
+  agent: "analyst"
+  context:
+    - claim_research_task
